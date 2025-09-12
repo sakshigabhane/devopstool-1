@@ -19,6 +19,22 @@
 	</properties>
 	
 	<dependencies>
+		<dependencies>
+    <!-- First dependency -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.14.0</version>
+    </dependency>
+
+    <!-- Second dependency -->
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.11.0</version>
+    </dependency>
+</dependencies>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -44,6 +60,25 @@
 			</plugin>
 		</plugins>
 		<finalName>devopstool</finalName>
+
+		<build>
+    <plugins>
+        <plugin>
+            <groupId>org.cyclonedx</groupId>
+            <artifactId>cyclonedx-maven-plugin</artifactId>
+            <version>2.7.9</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>makeAggregateBom</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 	</build>
+	
    
 </project>
